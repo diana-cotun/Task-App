@@ -1,0 +1,43 @@
+<section class="heading-section">
+  <h1 class="title">To do list</h1>
+</section>
+
+<!--<body class="body">-->
+
+<div class="add-todo-box" [formGroup]="taskForm">
+  <h2 class="new-todo">New Task</h2>
+
+  <mat-form-field class="fields">
+    <mat-label>Task</mat-label>
+    <input matInput #taskTestField required minlength="3" placeholder="task example" formControlName="title">
+  </mat-form-field>
+
+  <div class="required-text" *ngIf="taskForm.invalid && showValidationErrors">
+    <!--    <p *ngIf="taskTestField.required">Please enter the text of your task</p>-->
+    <p *ngIf="taskTestField.minLength">Task must be at lest 3 characters</p>
+  </div>
+
+  <mat-form-field class="fields">
+    <mat-label>Description</mat-label>
+    <textarea matInput placeholder="optional: time, location..." formControlName="description"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="onSave()">
+    <span class="material-icons">add</span>
+    Add
+  </button>
+
+</div>
+
+<section class="section">
+  <app-task-item
+    *ngFor="let task of tasks"
+    [task]="task"
+    (taskClicked)="onTaskClicked(task)"
+    (editClicked)="onEditTask(task)"
+  ></app-task-item>
+</section>
+<!--</body>-->
+
+
+
