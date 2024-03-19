@@ -1,0 +1,116 @@
+.todo-item {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  cursor: pointer;
+  padding: 17px;
+  border-bottom: 1px solid #f2f3f5;
+  position: relative;
+
+  &.competed {
+    color: #aaa;
+  }
+}
+
+.todo-item .check-box {
+  flex-shrink: 0;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+  transition: background-color 0.2s;
+
+  i.material-icons {
+    font-size: 19px;
+    font-weight: 600;
+    margin: auto;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: #333;
+  }
+}
+
+.todo-item.competed .check-box {
+  background: mediumseagreen;
+
+  i.material-icons {
+    opacity: 1;
+  }
+}
+
+.todo-item:hover .check-box {
+  i.material-icons {
+    /*border: 2px solid darkgrey;*/
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background: darkgrey;
+    /*border-color: darkgrey;*/
+    opacity: 0.28;
+  }
+}
+
+.todo-title {
+  font-weight: bold;
+  padding-bottom: 3px;
+}
+
+.todo-item .control-button-box {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline-flex;
+  padding-right: 6px;
+
+  /*  hide by default*/
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(3px);
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+}
+
+.todo-item:hover .control-button-box {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.3s;
+  transform: translateY(0);
+}
+
+.control-button-box .todo-control-button {
+  display: flex;
+  background: #f5f7f8;
+  padding: 5px 8px;
+
+  i.material-icons {
+    font-size: 20px;
+    color: #555;
+  }
+
+  &:hover {
+    background: #eeeeee;
+
+    i.material-icons {
+      color: #333;
+    }
+  }
+
+  &:active {
+    background: #e5e7e8;
+  }
+
+  &:first-of-type {
+    border-top-left-radius: 5px;
+  }
+
+  &:last-of-type {
+    border-top-right-radius: 5px;
+  }
+}
+
+.control-button-box .todo-control-button.is-danger:hover i.material-icons {
+  color: rgb(155, 27, 27);
+}
+
+.control-button-box .todo-control-button.is-danger:active i.material-icons {
+  color: rgb(227, 70, 70);
+}
